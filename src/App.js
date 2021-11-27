@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { FixedSizeList, FixedSizeList as List } from "react-window";
+import Item from "./Item";
+import Column from "./Column";
+import "./App.css";
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <List
+        useIsScrolling
+        {...props}
+        height={150}
+        itemSize={35}
+        width={300}
+        itemCount={1001}
+      >
+        {Item}
+      </List>
+      <List
+        className="h-list"
+        layout="horizontal"
+        height={75}
+        itemSize={100}
+        width={300}
+        itemCount={501}
+      >
+        {Column}
+      </List>
     </div>
   );
 }
